@@ -1,0 +1,1 @@
+export const filterVal = ["hight", "middle", "low"];
