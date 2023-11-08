@@ -1,11 +1,9 @@
-// "use client"
-import React from "react";
 import { useDateContext } from "@/app/context/dateContext";
 import { useTodoDispatchContext } from "@/app/context/todoContext";
 import { useTodoListContext, useTodoListDispatchContext } from "@/app/context/todoListContext";
 import { filterVal } from "@/app/lib/utils";
 
-export default function CreateTodo() {
+export default function AddTodo() {
     const currentDate = useDateContext();
     const todoLists  = useTodoListContext();
     const todoListDispatch = useTodoListDispatchContext();
@@ -26,7 +24,7 @@ export default function CreateTodo() {
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700">
             <div className="p-5 w-72">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
-                    Create Todo!
+                    Add Todo!
                 </h5>
                 <form onSubmit={handleSubmit}>
                     <input placeholder="title" defaultValue="" name="title" className="mb-3 font-normal text-gray-700 border"/>
@@ -40,7 +38,7 @@ export default function CreateTodo() {
                             }
                         </select>
                     </div>
-                    <input type="submit" value="Create!" />
+                    <button type="submit">Add!</button>
                 </form>
             </div>
         </div>

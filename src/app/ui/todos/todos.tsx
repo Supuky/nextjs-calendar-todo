@@ -5,7 +5,7 @@ import Filter from "../filter";
 import Todo from "./todo";
 import { useTodoListContext } from "@/app/context/todoListContext";
 import { useDateContext } from "@/app/context/dateContext";
-import CreateTodo from "./createTodo";
+import AddTodo from "./AddTodo";
 
 export default function Todos() {
     const [priorityFilter, setPriorityFilter] = useState("All");
@@ -32,7 +32,7 @@ export default function Todos() {
                         <Todo key={todo.id} title={todo.title} id={todo.id} start={todo.start} priority={todo.priority} category={todo.category} />
                     ))
                 }
-                <CreateTodo />
+                <AddTodo />
             </div>
         </div>
     )
