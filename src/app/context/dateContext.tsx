@@ -1,12 +1,10 @@
 // todoContextを管理 (todoリストのみのステートを持っておいた方がいいかも)
 import { createContext, useContext, useReducer } from "react";
-import { dateReducer } from "../lib/utils";
+import { dateDispatch, dateReducer } from "../lib/utils";
 
 const today = new Date().toISOString().split("T")[0];
-
-// ↓anyはやめておきたい
 const dateContext = createContext(today);
-const dateDispatchContext = createContext<any>({});
+const dateDispatchContext = createContext<dateDispatch>(() => {});
 
 const DateProvider = ({ children }: { children: React.ReactNode }) => {
     // useReducerフックを使用してstateとdispatch関数を取得

@@ -1,4 +1,5 @@
-import { TodoDetail } from "./definitions";
+import { TodoDetail } from '@/app/lib/definitions';
+import { Dispatch } from 'react';
 
 export const filterVal = ["high", "middle", "low"];
 
@@ -47,7 +48,8 @@ export const reducer = (state: TodoDetail[], action: {type: string, payload: Tod
   }
 };
 
-//dispatch({ type: 'setHolidays', payload: events });
+// createContextの初期値用オブジェクト
+export type todoDispatch = Dispatch<{ type: string, payload: TodoDetail[] }>;
 
 // 画面下のtodoを管理
 export const todoListReducer = (state: TodoDetail[], action: {type: string, payload: TodoDetail}) => {
@@ -62,6 +64,8 @@ export const todoListReducer = (state: TodoDetail[], action: {type: string, payl
   }
 };
 
+export type todoListDispatch = Dispatch<{ type: string, payload: TodoDetail }>;
+
 // ページ全体の日にちを管理
 export const dateReducer = (state: string, action: {type: string, payload: string}) => {
   switch (action.type) {
@@ -71,3 +75,5 @@ export const dateReducer = (state: string, action: {type: string, payload: strin
       return state;
   }
 };
+
+export type dateDispatch = Dispatch<{ type: string, payload: string }>;

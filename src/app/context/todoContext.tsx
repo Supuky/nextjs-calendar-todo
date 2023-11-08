@@ -1,10 +1,10 @@
 // todoContextを管理 (todoリストのみのステートを持っておいた方がいいかも)
 import { createContext, useContext, useReducer } from "react";
-import { initialState, reducer } from "../lib/utils";
+import { initialState, reducer, todoDispatch } from "../lib/utils";
+import { TodoDetail } from "../lib/definitions";
 
-// ↓anyはやめておきたい
-const TodoContext = createContext<any>([{}]);
-const TodoDispatchContext = createContext<any>({});
+const TodoContext = createContext<TodoDetail[]>([]);
+const TodoDispatchContext = createContext<todoDispatch>(() => {});
 
 const TodoProvider = ({ children }: { children: React.ReactNode }) => {
     // useReducerフックを使用してstateとdispatch関数を取得
