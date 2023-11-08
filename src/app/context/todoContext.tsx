@@ -1,4 +1,4 @@
-// todoContextを管理
+// todoContextを管理 (todoリストのみのステートを持っておいた方がいいかも)
 import { createContext, useContext, useReducer } from "react";
 import { initialState, reducer } from "../lib/utils";
 

@@ -1,41 +1,31 @@
-import { eventFilter, filterVal } from "@/app/lib/utils";
+"use client"
+import { useState } from "react";
+import { filterVal } from "@/app/lib/utils";
 import Filter from "../filter";
 import Todo from "./todo";
-import { TodoDetail } from "@/app/lib/definitions";
-import { useTodoContext } from "@/app/context/todoContext";
-
-// idかstartがあるオブジェクトをだけを取得する関数を作成 
-
-// const state: TodoDetail[] = [
-//     {
-//         id: 'a',
-//         title: 'my event',
-//         start: '2023-11-03'
-//     },
-//     {
-//         id: 'b',
-//         title: 'you event',
-//         start: '2023-11-01'
-//     },
-//     {
-//         id: 'c',
-//         title: 'my event',
-//         start: '2023-11-01'
-//     },
-// ]
+import { useTodoListContext, useTodoListDispatchContext } from "@/app/context/todoListContext";
 
 export default function Todos() {
-    const events = useTodoContext();
-    const filteredEvents = eventFilter(events);
+    const [priorityFilter, setPriorityFilter] = useState("All");
+
+    const todoLists = useTodoListContext();
+    let todayTodos;
+    if(priorityFilter === "All") {
+        todayTodos = todoLists.filter((todo :any) => todo.start === new Date().toISOString().split("T")[0]);
+    } else {
+        todayTodos = todoLists.filter((todo :any) => todo.start === new Date().toISOString().split("T")[0] && todo.priority === priorityFilter);
+    }
+
+    // const filteredEvents = eventFilter(events);
     return (
         <div className='w-full'>
             <div className='flex justify-between items-center'>
                 <h2 className='text-xl font-bold'>Today&apos;s todo</h2>
-                <Filter filterList={filterVal} filterName='priority' />
+                <Filter filterList={filterVal} filterName='priority' priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter}/>
             </div>
             <div className='flex justify-between items-center flex-wrap'>
                 {
-                    filteredEvents.map(todo => (
+                    todayTodos.map((todo: any) => (
                         <Todo key={todo.id} title={todo.title} id={todo.id!} start={todo.start!} priority={todo.priority} />
                     ))
                 }

@@ -1,6 +1,6 @@
 "use client";
 import FullCalendar from '@fullcalendar/react';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Filter from '../filter';
@@ -8,10 +8,6 @@ import { filterVal } from '@/app/lib/utils';
 import { TodoDetail } from '@/app/lib/definitions';
 import { useEffect } from 'react';
 import { useTodoContext, useTodoDispatchContext } from '@/app/context/todoContext';
-
-// const dateClick = (info: any) => {
-//     console.log(info)
-// }
 
 export default function Calendar() {
     const events = useTodoContext();
@@ -35,7 +31,15 @@ export default function Calendar() {
         };
         getHolidays();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []);
+    }, []);
+
+    const dateClick = (info: DateClickArg) => {
+        console.log(info.dateStr);
+    }
+    
+    const getDragStop = (info: any) => {
+        console.log(info);
+    }
 
     return (
         <div className='w-full'>
@@ -52,7 +56,10 @@ export default function Calendar() {
                 height={"auto"}
                 businessHours={true}
                 selectable={true}
-                // dateClick={dateClick}
+                editable={true}
+                droppable={true} 
+                eventDragStop={getDragStop}
+                dateClick={dateClick}
             />
         </div>
     )
