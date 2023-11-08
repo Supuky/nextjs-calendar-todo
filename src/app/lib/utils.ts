@@ -5,31 +5,32 @@ export const filterVal = ["high", "middle", "low"];
 
 export const initialState: TodoDetail[] = [
     {
-        id: 'a',
-        title: 'ジム',
-        start: '2023-11-03',
-        priority: "high",
-        category: "private"
+      id: 'a',
+      title: 'ジム',
+      start: '2023-11-03',
+      priority: "high",
+      category: "private"
     },
     {
-        id: 'b',
-        title: 'ジム',
-        start: '2023-11-01',
-        priority: "low",
-        category: "private"
+      id: 'b',
+      title: 'ジム',
+      start: '2023-11-01',
+      priority: "low",
+      category: "private"
     },
     {
-        id: 'd',
-        title: 'ランニング',
-        start: '2023-11-08',
-        priority: "low",
-        category: "private"
+      id: 'd',
+      title: 'ランニング',
+      start: '2023-11-08',
+      priority: "low",
+      category: "private"
     },
     {
-        id: 'f',
-        title: '買い物',
-        start: '2023-11-08',
-        priority: "middle"
+      id: 'f',
+      title: '買い物',
+      start: '2023-11-08',
+      priority: "middle",
+      category: "private"
     },
   ];
 

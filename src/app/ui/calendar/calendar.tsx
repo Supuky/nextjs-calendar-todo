@@ -9,6 +9,7 @@ import { TodoDetail } from '@/app/lib/definitions';
 import { useEffect, useState } from 'react';
 import { useTodoContext, useTodoDispatchContext } from '@/app/context/todoContext';
 import { useDateDispatchContext } from '@/app/context/dateContext';
+import { EventClickArg } from '@fullcalendar/core/index.js';
 
 export default function Calendar() {
     const [priorityFilter, setPriorityFilter] = useState("All");
@@ -24,7 +25,7 @@ export default function Calendar() {
             const events: TodoDetail[] = [];
             // data: {2023-01-01: "元日"}の形式で渡ってくるので、[{ title: "元日", date: "2023-01-01", display: "background" }] の形式に変換する
             for (const [key, value] of Object.entries(data)) {
-              events.push({ title: value as string, date: key, display: 'background'});
+              events.push({ title: value as string, date: key, display: 'background', backgroundColor: "#fffb00"});
             }
             // reducerを使って状態を更新
             todoDispatch({ type: 'setHolidays', payload: events });
@@ -40,6 +41,10 @@ export default function Calendar() {
       console.log(info.dateStr);
       dayDispatch({ type: "changeDate", payload: info.dateStr })
     }
+
+    const eventClick = (info: EventClickArg) => {
+      console.log(info.event.id);
+    }
     
     // const getDragStop = (info: any) => {
     //   console.log(info);
@@ -54,16 +59,17 @@ export default function Calendar() {
             <FullCalendar
                 plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                 initialView="dayGridMonth"
-                locale="ja"
                 headerToolbar={{start: "prev,next,today", center: "title", end: "dayGridMonth,timeGridWeek"}}
                 events={events}
                 height={"auto"}
                 businessHours={true}
                 selectable={true}
-                // editable={true}
-                // droppable={true} 
-                // eventDragStop={getDragStop}
                 dateClick={dateClick}
+                eventClick={eventClick}
+                editable={true}
+                droppable={true} 
+                // locale="ja"
+                // eventDragStop={getDragStop}
             />
         </div>
     )

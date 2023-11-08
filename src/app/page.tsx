@@ -7,16 +7,20 @@ import { DateProvider } from "./context/dateContext";
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8">
-      <h1 className="text-2xl text-gray-600 font-bold">Advanced Todo List</h1>
-      <DateProvider>
-        <TodoListProvider>
-          <TodoProvider >
-              <Calendar /> 
-              <Todos />
-          </TodoProvider>
-        </TodoListProvider>
-      </DateProvider>
+    <main className="min-h-screen  p-4">
+      <nav className="flex justify-between mb-4 border-b border-violet-100 p-4">
+        <h1 className="font-bold text-2xl text-gray-700">Advanced Todo List</h1>
+      </nav>
+      <div className="max-w-4xl m-auto">
+        <DateProvider>
+          <TodoListProvider>
+            <TodoProvider >
+                <Calendar /> 
+                <Todos />
+            </TodoProvider>
+          </TodoListProvider>
+        </DateProvider>
+      </div>
     </main>
   )
 }

@@ -8,5 +8,6 @@ export type TodoDetail = {
     start?: string,  // Date?
     category?: string,
     priority?: "high" | "middle" | "low",
-    display?: string
+    display?: string,
+    backgroundColor?: string
 }

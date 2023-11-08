@@ -11,7 +11,8 @@ export default function Todos() {
     const [priorityFilter, setPriorityFilter] = useState("All");
 
     const todoLists = useTodoListContext();
-    const currentDay = useDateContext();
+    const currentDay:string = useDateContext();
+
     let todayTodos;
     if(priorityFilter === "All") {
         todayTodos = todoLists.filter((todo :any) => todo.start === currentDay);
@@ -23,7 +24,12 @@ export default function Todos() {
     return (
         <div className='w-full'>
             <div className='flex justify-between items-center'>
-                <h2 className='text-xl font-bold'>Today&apos;s todo</h2>
+                <h2 className='text-xl font-bold'>
+                    {
+                        currentDay === new Date().toISOString().split("T")[0] ? 
+                        "Today's" : currentDay
+                    } todo
+                </h2>
                 <Filter filterList={filterVal} filterName='priority' priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter}/>
             </div>
             <div className='flex justify-between items-center flex-wrap'>
