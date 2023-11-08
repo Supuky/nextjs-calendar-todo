@@ -26,7 +26,7 @@ export default function Calendar() {
             for (const [key, value] of Object.entries(data)) {
               events.push({ title: value as string, date: key, display: 'background'});
             }
-            // reducerを使って状態を更新します
+            // reducerを使って状態を更新
             todoDispatch({ type: 'setHolidays', payload: events });
           } catch (error) {
             console.error('Error fetching holidays data:', error);
@@ -41,9 +41,9 @@ export default function Calendar() {
       dayDispatch({ type: "changeDate", payload: info.dateStr })
     }
     
-    const getDragStop = (info: any) => {
-        console.log(info);
-    }
+    // const getDragStop = (info: any) => {
+    //   console.log(info);
+    // }
 
     return (
         <div className='w-full'>
@@ -60,9 +60,9 @@ export default function Calendar() {
                 height={"auto"}
                 businessHours={true}
                 selectable={true}
-                editable={true}
+                // editable={true}
                 // droppable={true} 
-                eventDragStop={getDragStop}
+                // eventDragStop={getDragStop}
                 dateClick={dateClick}
             />
         </div>

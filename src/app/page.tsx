@@ -13,8 +13,8 @@ export default function Page() {
         <TodoListProvider>
           <TodoProvider >
               <Calendar /> 
+              <Todos />
           </TodoProvider>
-          <Todos />
         </TodoListProvider>
       </DateProvider>
     </main>

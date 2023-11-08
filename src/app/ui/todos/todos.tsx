@@ -3,8 +3,9 @@ import { useState } from "react";
 import { filterVal } from "@/app/lib/utils";
 import Filter from "../filter";
 import Todo from "./todo";
-import { useTodoListContext, useTodoListDispatchContext } from "@/app/context/todoListContext";
+import { useTodoListContext } from "@/app/context/todoListContext";
 import { useDateContext } from "@/app/context/dateContext";
+import CreateTodo from "./createTodo";
 
 export default function Todos() {
     const [priorityFilter, setPriorityFilter] = useState("All");
@@ -28,9 +29,10 @@ export default function Todos() {
             <div className='flex justify-between items-center flex-wrap'>
                 {
                     todayTodos.map((todo: any) => (
-                        <Todo key={todo.id} title={todo.title} id={todo.id!} start={todo.start!} priority={todo.priority} />
+                        <Todo key={todo.id} title={todo.title} id={todo.id} start={todo.start} priority={todo.priority} category={todo.category} />
                     ))
                 }
+                <CreateTodo />
             </div>
         </div>
     )
