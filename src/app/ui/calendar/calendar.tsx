@@ -6,12 +6,15 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import Filter from '../filter';
 import { filterVal } from '@/app/lib/utils';
 import { TodoDetail } from '@/app/lib/definitions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTodoContext, useTodoDispatchContext } from '@/app/context/todoContext';
+import { useDateDispatchContext } from '@/app/context/dateContext';
 
 export default function Calendar() {
+    const [priorityFilter, setPriorityFilter] = useState("All");
     const events = useTodoContext();
-    const dispatch = useTodoDispatchContext();
+    const todoDispatch = useTodoDispatchContext();
+    const dayDispatch = useDateDispatchContext();
 
     useEffect(() => {
         const getHolidays = async () => {
@@ -24,7 +27,7 @@ export default function Calendar() {
               events.push({ title: value as string, date: key, display: 'background'});
             }
             // reducerを使って状態を更新します
-            dispatch({ type: 'setHolidays', payload: events });
+            todoDispatch({ type: 'setHolidays', payload: events });
           } catch (error) {
             console.error('Error fetching holidays data:', error);
           }
@@ -34,7 +37,8 @@ export default function Calendar() {
     }, []);
 
     const dateClick = (info: DateClickArg) => {
-        console.log(info.dateStr);
+      console.log(info.dateStr);
+      dayDispatch({ type: "changeDate", payload: info.dateStr })
     }
     
     const getDragStop = (info: any) => {
@@ -45,7 +49,7 @@ export default function Calendar() {
         <div className='w-full'>
             <div className='flex justify-between items-center'>
                 <h2 className='text-xl font-bold'>Calender</h2>
-                <Filter filterList={filterVal} filterName='priority' />
+                <Filter filterList={filterVal} filterName='priority' priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter} />
             </div>
             <FullCalendar
                 plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
@@ -57,7 +61,7 @@ export default function Calendar() {
                 businessHours={true}
                 selectable={true}
                 editable={true}
-                droppable={true} 
+                // droppable={true} 
                 eventDragStop={getDragStop}
                 dateClick={dateClick}
             />

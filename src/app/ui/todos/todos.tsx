@@ -4,16 +4,18 @@ import { filterVal } from "@/app/lib/utils";
 import Filter from "../filter";
 import Todo from "./todo";
 import { useTodoListContext, useTodoListDispatchContext } from "@/app/context/todoListContext";
+import { useDateContext } from "@/app/context/dateContext";
 
 export default function Todos() {
     const [priorityFilter, setPriorityFilter] = useState("All");
 
     const todoLists = useTodoListContext();
+    const currentDay = useDateContext();
     let todayTodos;
     if(priorityFilter === "All") {
-        todayTodos = todoLists.filter((todo :any) => todo.start === new Date().toISOString().split("T")[0]);
+        todayTodos = todoLists.filter((todo :any) => todo.start === currentDay);
     } else {
-        todayTodos = todoLists.filter((todo :any) => todo.start === new Date().toISOString().split("T")[0] && todo.priority === priorityFilter);
+        todayTodos = todoLists.filter((todo :any) => todo.start === currentDay && todo.priority === priorityFilter);
     }
 
     // const filteredEvents = eventFilter(events);

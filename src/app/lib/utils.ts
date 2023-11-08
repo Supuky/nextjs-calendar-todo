@@ -58,3 +58,13 @@ export const todoListReducer = (state: TodoDetail[], action: {type: string, payl
         return state;
     }
 };
+
+// ページ全体の日にちを管理
+export const dateReducer = (state: string, action: {type: string, payload: string}) => {
+    switch (action.type) {
+      case 'changeDate':
+        return action.payload;
+      default:
+        return state;
+    }
+};
