@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import FullCalendar from "@fullcalendar/react";
 // import useSWR from "swr";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
@@ -14,8 +14,11 @@ import {
 } from "@/app/context/todoContext";
 import { useDateDispatchContext } from "@/app/context/dateContext";
 import { EventClickArg } from "@fullcalendar/core/index.js";
+import { useRouter } from "next/navigation";
+
 
 export default function Calendar() {
+  const router = useRouter()
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [priorityTodo, setPriorityTodo] = useState<TodoDetail[]>([])
   const events = useTodoContext();
@@ -64,7 +67,7 @@ export default function Calendar() {
   };
 
   const eventClick = (info: EventClickArg) => {
-    console.log(info.event.id);
+    router.push(`/todos/${info.event.id}/edit`);
   };
 
   // const getDragStop = (info: any) => {

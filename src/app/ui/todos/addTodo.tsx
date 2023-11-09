@@ -11,7 +11,7 @@ export default function AddTodo() {
         title: '',
         category: '',
         priority: 'high',
-      });
+    });
     const currentDate = useDateContext();
     const todoLists  = useTodoListContext();
     const todoListDispatch = useTodoListDispatchContext();
@@ -47,7 +47,7 @@ export default function AddTodo() {
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700">
             <div className="p-5 w-72">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
-                    Add Todo!
+                    Create Todo!
                 </h5>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-2">

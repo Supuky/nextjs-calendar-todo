@@ -57,6 +57,9 @@ export const todoListReducer = (state: TodoDetail[], action: {type: string, payl
   switch (action.type) {
     case "add":
       return [...state, action.payload];
+    case "add/update":
+      const updateState = state.filter(_state => _state.id !== action.payload.id);
+      return [...updateState, action.payload]
     case "delete":
       const newState = state.filter(_state => _state.id !== action.payload.id);
       return [...newState];
