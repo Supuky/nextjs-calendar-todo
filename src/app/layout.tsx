@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { DateProvider } from './context/dateContext'
+import { TodoListProvider } from './context/todoListContext'
+import { TodoProvider } from './context/todoContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className} suppressHydrationWarning={true}>{children}</body>
+      <body className={inter.className} suppressHydrationWarning={true}>
+      <DateProvider>
+          <TodoListProvider>
+            <TodoProvider >
+                {children}
+            </TodoProvider>
+          </TodoListProvider>
+      </DateProvider>
+      </body>
     </html>
   )
 }

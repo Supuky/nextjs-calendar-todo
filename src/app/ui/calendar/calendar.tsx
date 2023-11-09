@@ -38,7 +38,6 @@ export default function Calendar() {
     }, []);
 
     const dateClick = (info: DateClickArg) => {
-      console.log(info.dateStr);
       dayDispatch({ type: "changeDate", payload: info.dateStr })
     }
 

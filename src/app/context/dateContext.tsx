@@ -1,3 +1,4 @@
+"use client"
 // todoContextを管理 (todoリストのみのステートを持っておいた方がいいかも)
 import { createContext, useContext, useReducer } from "react";
 import { dateDispatch, dateReducer } from "../lib/utils";

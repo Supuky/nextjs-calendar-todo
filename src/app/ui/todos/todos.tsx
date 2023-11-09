@@ -1,4 +1,3 @@
-"use client"
 import { useState } from "react";
 import { filterVal } from "@/app/lib/utils";
 import Filter from "../filter";
