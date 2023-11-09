@@ -24,8 +24,8 @@ export default function AddTodo() {
         // フォームの値を使った処理
         const newTodo = { id: todoLists.length.toString(), title: title, start: currentDate, priority: priority, category: category };
 
-        todoListDispatch({ type: "add", payload: newTodo});
         todoDispatch({ type: "add", payload: [newTodo]});
+        todoListDispatch({ type: "add", payload: newTodo});
 
         // フォームの値を初期化
         setFormData({

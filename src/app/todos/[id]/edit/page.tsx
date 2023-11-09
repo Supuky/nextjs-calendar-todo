@@ -28,8 +28,8 @@ export default function Page( { params }: {params: { id: string }} ) {
         // フォームの値を使った処理
         const newTodo = { id: id, title: title, start: start, priority: priority, category: category };
 
+        todoDispatch({ type: "add/update", payload: [newTodo]});
         todoListDispatch({ type: "add/update", payload: newTodo});
-        todoDispatch({ type: "add", payload: [newTodo]});
 
         router.push("/");
     };

@@ -18,9 +18,9 @@ import { useRouter } from "next/navigation";
 
 
 export default function Calendar() {
-  const router = useRouter()
+  const router = useRouter();
   const [priorityFilter, setPriorityFilter] = useState("All");
-  const [priorityTodo, setPriorityTodo] = useState<TodoDetail[]>([])
+  const [priorityTodo, setPriorityTodo] = useState<TodoDetail[]>([]);
   const events = useTodoContext();
   const todoDispatch = useTodoDispatchContext();
   const dayDispatch = useDateDispatchContext();
@@ -53,12 +53,13 @@ export default function Calendar() {
   }, []);
 
   useEffect(() => {
-    let filteredTodos;
+    let filteredTodos: TodoDetail[];
     if(priorityFilter !== "All") {
-      filteredTodos = events.filter((todo :any) => todo.date || todo.priority === priorityFilter);
+      filteredTodos = events.filter((todo: TodoDetail) => todo.date || todo.priority === priorityFilter);
     } else {
       filteredTodos = events;
     }
+    // console.log(filteredTodos);
     setPriorityTodo(filteredTodos);
   }, [priorityFilter, events])
 

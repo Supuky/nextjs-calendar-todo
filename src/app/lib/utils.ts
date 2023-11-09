@@ -38,9 +38,13 @@ export const initialState: TodoDetail[] = [
 export const reducer = (state: TodoDetail[], action: {type: string, payload: TodoDetail[] }) => {
   switch (action.type) {
     case 'setHolidays':
-      return [...state, ...action.payload];
+      let mergedArray = Array.from(new Set([...state, ...action.payload].map(item => JSON.stringify(item)))).map(item => JSON.parse(item) as TodoDetail);
+      return [...mergedArray];
     case "add": 
       return [...state, ...action.payload];
+    case "add/update": 
+      const updateState = state.filter(_state => _state.id !== action.payload[0].id);
+      return [...updateState, ...action.payload];
     case "delete":
       const newState = state.filter(_state => _state.id !== action.payload[0].id);
       return [...newState];
