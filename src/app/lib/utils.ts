@@ -22,6 +22,7 @@ export const initialState: TodoDetail[] = [
       id: 'd',
       title: 'ランニング',
       start: '2023-11-08',
+      // end: "2023-11-10",
       priority: "low",
       category: "private"
     },
@@ -29,6 +30,20 @@ export const initialState: TodoDetail[] = [
       id: 'f',
       title: '買い物',
       start: '2023-11-08',
+      priority: "middle",
+      category: "private"
+    },
+    {
+      id: 'g',
+      title: '誕生日',
+      start: '2023-11-18',
+      priority: "middle",
+      category: "private"
+    },
+    {
+      id: 'h',
+      title: 'サウナ',
+      start: '2023-11-28',
       priority: "middle",
       category: "private"
     },

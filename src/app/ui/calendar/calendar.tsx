@@ -13,7 +13,7 @@ import {
   useTodoDispatchContext,
 } from "@/app/context/todoContext";
 import { useDateDispatchContext } from "@/app/context/dateContext";
-import { EventClickArg, EventDropArg } from "@fullcalendar/core/index.js";
+import { EventClickArg } from "@fullcalendar/core/index.js";
 import { useRouter } from "next/navigation";
 import { useTodoListDispatchContext } from "@/app/context/todoListContext";
 
@@ -76,9 +76,15 @@ export default function Calendar() {
   // const getEventDrop = (info: EventDropArg) => {
   // 全ての内容を取得して渡さないと空白になる
   const getEventDrop = (info: any) => {
-    todoDispatch({ type: "add/update", payload: [{title: info.event.title, id: info.event.id, start: info.event._instance.range.start.toISOString().split("T")[0]}] });
+    // console.log(info.event.extendedProps);
+    const { title } = info.event;
+    const { id } = info.event;
+    const start = info.event._instance.range.start.toISOString().split("T")[0];
+    const { category } = info.event.extendedProps;
+    const { priority } = info.event.extendedProps;
+    todoDispatch({ type: "add/update", payload: [{title: title, id: id, start: start, category: category, priority: priority}] });
 
-    todoListDispatch({ type: "add/update", payload: {title: info.event.title, id: info.event.id, start: info.event._instance.range.start.toISOString().split("T")[0]} })
+    todoListDispatch({ type: "add/update", payload: {title: title, id: id, start: start, category: category, priority: priority} });
   }
 
   const getEventRisizeStop = (info: any) => {

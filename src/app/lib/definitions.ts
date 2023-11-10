@@ -6,6 +6,7 @@ export type TodoDetail = {
     date?: string,
     id?: string,
     start?: string,  // Date?
+    end?: string,
     category?: string,
     priority?: "high" | "middle" | "low",
     display?: string,
