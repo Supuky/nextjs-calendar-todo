@@ -1,7 +1,7 @@
-// "use client";
+"use client";
 import FullCalendar from "@fullcalendar/react";
 // import useSWR from "swr";
-import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
+import interactionPlugin, { DateClickArg, EventDragStopArg } from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Filter from "../filter";
@@ -13,8 +13,9 @@ import {
   useTodoDispatchContext,
 } from "@/app/context/todoContext";
 import { useDateDispatchContext } from "@/app/context/dateContext";
-import { EventClickArg } from "@fullcalendar/core/index.js";
+import { EventClickArg, EventDropArg } from "@fullcalendar/core/index.js";
 import { useRouter } from "next/navigation";
+import { useTodoListDispatchContext } from "@/app/context/todoListContext";
 
 
 export default function Calendar() {
@@ -23,6 +24,7 @@ export default function Calendar() {
   const [priorityTodo, setPriorityTodo] = useState<TodoDetail[]>([]);
   const events = useTodoContext();
   const todoDispatch = useTodoDispatchContext();
+  const todoListDispatch = useTodoListDispatchContext();
   const dayDispatch = useDateDispatchContext();
 
   useEffect(() => {
@@ -71,9 +73,17 @@ export default function Calendar() {
     router.push(`/todos/${info.event.id}/edit`);
   };
 
-  // const getDragStop = (info: any) => {
-  //   console.log(info);
-  // }
+  // const getEventDrop = (info: EventDropArg) => {
+  // 全ての内容を取得して渡さないと空白になる
+  const getEventDrop = (info: any) => {
+    todoDispatch({ type: "add/update", payload: [{title: info.event.title, id: info.event.id, start: info.event._instance.range.start.toISOString().split("T")[0]}] });
+
+    todoListDispatch({ type: "add/update", payload: {title: info.event.title, id: info.event.id, start: info.event._instance.range.start.toISOString().split("T")[0]} })
+  }
+
+  const getEventRisizeStop = (info: any) => {
+    console.log(info)
+  }
 
   return (
     <div className="w-full mb-6">
@@ -103,7 +113,8 @@ export default function Calendar() {
         editable={true}
         droppable={true}
         // locale="ja"
-        // eventDragStop={getDragStop}
+        eventDrop={getEventDrop}
+        eventResizeStop={getEventRisizeStop}
       />
     </div>
   );
