@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { inter } from "@/app/ui/font";
 import './globals.css'
 import { DateProvider } from './context/dateContext'
 import { TodoListProvider } from './context/todoListContext'
 import { TodoProvider } from './context/todoContext'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Todo List',
