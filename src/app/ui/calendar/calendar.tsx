@@ -1,7 +1,8 @@
 "use client";
 import FullCalendar from "@fullcalendar/react";
 // import useSWR from "swr";
-import interactionPlugin, { DateClickArg, EventDragStopArg } from "@fullcalendar/interaction";
+import CalendarSkeleton from "../skeleton";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Filter from "../filter";
@@ -22,6 +23,7 @@ export default function Calendar() {
   const router = useRouter();
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [priorityTodo, setPriorityTodo] = useState<TodoDetail[]>([]);
+  const [fetchData, setFetchData] = useState<{}[] | null>(null);
   const events = useTodoContext();
   const todoDispatch = useTodoDispatchContext();
   const todoListDispatch = useTodoListDispatchContext();
@@ -34,6 +36,7 @@ export default function Calendar() {
           "https://holidays-jp.github.io/api/v1/date.json"
         );
         const data = await response.json();
+        const fetchData = setFetchData(data);
         const events: TodoDetail[] = [];
         // data: {2023-01-01: "元日"}の形式で渡ってくるので、[{ title: "元日", date: "2023-01-01", display: "background" }] の形式に変換する
         for (const [key, value] of Object.entries(data)) {
@@ -102,26 +105,32 @@ export default function Calendar() {
           setPriorityFilter={setPriorityFilter}
         />
       </div>
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        headerToolbar={{
-          start: "prev,next,today",
-          center: "title",
-          end: "dayGridMonth,timeGridWeek",
-        }}
-        events={priorityTodo}
-        height={"auto"}
-        businessHours={true}
-        selectable={true}
-        dateClick={dateClick}
-        eventClick={eventClick}
-        editable={true}
-        droppable={true}
-        // locale="ja"
-        eventDrop={getEventDrop}
-        eventResizeStop={getEventRisizeStop}
-      />
+      {
+        fetchData ? 
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            start: "prev,next,today",
+            center: "title",
+            end: "dayGridMonth,timeGridWeek",
+          }}
+          events={priorityTodo}
+          height={"auto"}
+          businessHours={true}
+          selectable={true}
+          dateClick={dateClick}
+          eventClick={eventClick}
+          editable={true}
+          droppable={true}
+          // locale="ja"
+          eventDrop={getEventDrop}
+          eventResizeStop={getEventRisizeStop}
+        /> 
+        :
+        <CalendarSkeleton />
+      }
+      
     </div>
   );
 }
