@@ -8,8 +8,8 @@ export default function Todo({ id, title, start, priority, category }: TodoDetai
     const todoDispatch = useTodoDispatchContext();
 
     const deleteHandler = () => {
-        todoListDispatch({ type: "delete", payload: {title: title, id: id, start: start, category: category} })
-        todoDispatch({ type: "delete", payload: [{title: title, id: id, start: start, category: category}] })
+        todoListDispatch({ type: "delete", payload: {title: title, id: id, start: start, category: category} });
+        todoDispatch({ type: "delete", payload: [{title: title, id: id, start: start, category: category}] });
     }
 
     return (

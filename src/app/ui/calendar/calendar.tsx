@@ -64,7 +64,6 @@ export default function Calendar() {
     } else {
       filteredTodos = events;
     }
-    // console.log(filteredTodos);
     setPriorityTodo(filteredTodos);
   }, [priorityFilter, events])
 
@@ -77,7 +76,6 @@ export default function Calendar() {
   };
 
   // const getEventDrop = (info: EventDropArg) => {
-  // 全ての内容を取得して渡さないと空白になる
   const getEventDrop = (info: any) => {
     // console.log(info.event.extendedProps);
     const { title } = info.event;
