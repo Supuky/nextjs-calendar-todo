@@ -1,3 +1,5 @@
+import { Dispatch } from "react";
+
 // export type FilterList = ["hight", "middle", "low"];
 export type FilterList = string[];
 
@@ -12,3 +14,8 @@ export type TodoDetail = {
     display?: string,
     backgroundColor?: string
 }
+
+// createContextの初期値用オブジェクト
+export type todoDispatch = Dispatch<{ type: string, payload: TodoDetail[] }>;
+export type todoListDispatch = Dispatch<{ type: string, payload: TodoDetail }>;
+export type dateDispatch = Dispatch<{ type: string, payload: string }>;
