@@ -9,7 +9,7 @@ const TodoListContext = createContext<TodoDetail[]>([]);
 const TodoListDispatchContext = createContext<todoListDispatch>(() => {});
 
 // 画面下のtodoを管理
-export const todoListReducer = (state: TodoDetail[], action: {type: string, payload: TodoDetail}) => {
+const todoListReducer = (state: TodoDetail[], action: {type: string, payload: TodoDetail}) => {
     switch (action.type) {
       case "add":
         return [...state, action.payload];

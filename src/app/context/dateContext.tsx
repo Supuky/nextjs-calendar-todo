@@ -7,7 +7,7 @@ const dateContext = createContext(today);
 const dateDispatchContext = createContext<dateDispatch>(() => {});
 
 // ページ全体の日にちを管理
-export const dateReducer = (state: string, action: {type: string, payload: string}) => {
+const dateReducer = (state: string, action: {type: string, payload: string}) => {
     switch (action.type) {
       case 'changeDate':
         return action.payload;
