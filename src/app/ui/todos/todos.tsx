@@ -35,7 +35,7 @@ export default function Todos() {
                 </h2>
                 <Filter filterList={filterVal} filterName='priority' priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter}/>
             </div>
-            <div className='flex justify-center items-stretch flex-wrap sm:justify-between'>
+            <div className='flex justify-center items-stretch flex-wrap sm:justify-between gap-3'>
                 {
                     todayTodos.map((todo: TodoDetail) => (
                         <Todo key={todo.id} title={todo.title} id={todo.id} start={todo.start} priority={todo.priority} category={todo.category} />
