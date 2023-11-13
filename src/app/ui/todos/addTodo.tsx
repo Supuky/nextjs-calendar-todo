@@ -44,18 +44,18 @@ export default function AddTodo() {
     };
 
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700">
+        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <div className="p-5 w-72">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
                     Create Todo!
                 </h5>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-2">
-                        <input placeholder="title" value={formData.title} onChange={handleChange} name="title" className="block w-full rounded-md border-1 border-gray-700 dark:border-gray-700 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
+                        <input placeholder="title" value={formData.title} onChange={handleChange} name="title" className="block w-full rounded-md border border-violet-700 dark:border-gray-200 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
                         sm:text-sm sm:leading-6"/>
                     </div>
                     <div className="mt-2">
-                        <input placeholder="category" value={formData.category} onChange={handleChange} name="category" className="block w-full rounded-md border-1 border-gray-700 dark:border-gray-700 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
+                        <input placeholder="category" value={formData.category} onChange={handleChange} name="category" className="block w-full rounded-md border border-violet-700 dark:border-gray-200 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
                         sm:text-sm sm:leading-6"/>
                     </div>
                     <div className="mt-4 flex justify-between">
