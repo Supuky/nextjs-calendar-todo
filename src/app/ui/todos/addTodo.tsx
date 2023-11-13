@@ -51,11 +51,11 @@ export default function AddTodo() {
                 </h5>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-2">
-                        <input placeholder="title" value={formData.title} onChange={handleChange} name="title" className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
+                        <input placeholder="title" value={formData.title} onChange={handleChange} name="title" className="block w-full rounded-md border-1 border-gray-700 dark:border-gray-700 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
                         sm:text-sm sm:leading-6"/>
                     </div>
                     <div className="mt-2">
-                        <input placeholder="category" value={formData.category} onChange={handleChange} name="category" className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
+                        <input placeholder="category" value={formData.category} onChange={handleChange} name="category" className="block w-full rounded-md border-1 border-gray-700 dark:border-gray-700 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
                         sm:text-sm sm:leading-6"/>
                     </div>
                     <div className="mt-4 flex justify-between">
@@ -66,7 +66,7 @@ export default function AddTodo() {
                                 ))
                             }
                         </select>
-                        <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-400 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-500 dark:hover:bg-violet-400 dark:focus:ring-blue-800" type="submit">Add!</button>
+                        <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-400 rounded-md hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 dark:bg-violet-500 dark:hover:bg-violet-400 dark:focus:ring-violet-800" type="submit">Add!</button>
                     </div>
                 </form>
             </div>

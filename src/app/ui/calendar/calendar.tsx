@@ -130,8 +130,7 @@ export default function Calendar() {
         /> 
         :
         <CalendarSkeleton />
-      }
-      
+    }
     </div>
   );
 }
