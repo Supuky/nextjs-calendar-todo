@@ -13,7 +13,7 @@ export default function Todo({ id, title, start, priority, category }: TodoDetai
     }
 
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700">
+        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <div className="p-5 w-72">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
                     {title}
@@ -32,7 +32,7 @@ export default function Todo({ id, title, start, priority, category }: TodoDetai
                 </div>
                 <div className="flex justify-between">
                     <button type="button" className="inline-flex justify-center rounded-md  px-3 py-2 text-sm font-semibold text-red-500 border border-red-500 :hover:bg-gray-50  sm:w-auto" onClick={deleteHandler}>Delete</button>
-                    <Link href={`todos/${id}/edit`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-400 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-500 dark:hover:bg-violet-400 dark:focus:ring-blue-800">
+                    <Link href={`todos/${id}/edit`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-400 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-blue-800">
                         Read
                     </Link>
                 </div>
