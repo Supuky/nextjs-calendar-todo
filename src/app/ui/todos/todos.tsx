@@ -27,7 +27,7 @@ export default function Todos() {
     return (
         <div className='w-full'>
             <div className='flex justify-between items-center mb-2'>
-                <h2 className='text-xl font-bold'>
+                <h2 className='sm:text-xl font-bold'>
                     {
                         currentDay === new Date().toISOString().split("T")[0] ? 
                         "Today's" : currentDay
@@ -35,7 +35,7 @@ export default function Todos() {
                 </h2>
                 <Filter filterList={filterVal} filterName='priority' priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter}/>
             </div>
-            <div className='flex justify-between items-stretch flex-wrap'>
+            <div className='flex justify-center items-stretch flex-wrap sm:justify-between'>
                 {
                     todayTodos.map((todo: TodoDetail) => (
                         <Todo key={todo.id} title={todo.title} id={todo.id} start={todo.start} priority={todo.priority} category={todo.category} />

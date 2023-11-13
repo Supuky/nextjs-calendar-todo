@@ -95,7 +95,7 @@ export default function Calendar() {
   return (
     <div className="w-full mb-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">Calender</h2>
+        <h2 className="sm:text-xl font-bold">Calender</h2>
         <Filter
           filterList={filterVal}
           filterName="priority"
@@ -108,10 +108,14 @@ export default function Calendar() {
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
+          titleFormat={{ month: 'long' }  }
           headerToolbar={{
-            start: "prev,next,today",
+            // start: "prev,next,today",
+            // center: "title",
+            // end: "dayGridMonth,timeGridWeek",
+            start: "prev",
             center: "title",
-            end: "dayGridMonth,timeGridWeek",
+            end: "next"
           }}
           events={priorityTodo}
           height={"auto"}
@@ -121,7 +125,6 @@ export default function Calendar() {
           eventClick={eventClick}
           editable={true}
           droppable={true}
-          // locale="ja"
           eventDrop={getEventDrop}
           eventResizeStop={getEventRisizeStop}
         /> 
