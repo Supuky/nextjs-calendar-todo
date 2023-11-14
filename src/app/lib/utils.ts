@@ -36,7 +36,7 @@ export const initialState: TodoDetail[] = [
       id: 'g',
       title: '誕生日🎂',
       start: '2023-11-18',
-      priority: "middle",
+      priority: "high",
       category: "private"
     },
     {
