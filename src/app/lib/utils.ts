@@ -23,7 +23,7 @@ export const initialState: TodoDetail[] = [
       start: '2023-11-08',
       // end: "2023-11-10",
       priority: "low",
-      category: "private"
+      category: "private",
     },
     {
       id: 'f',

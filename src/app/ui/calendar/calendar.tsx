@@ -119,6 +119,7 @@ export default function Calendar() {
           }}
           events={priorityTodo}
           height={"auto"}
+          // aspectRatio={0.8}
           businessHours={true}
           selectable={true}
           dateClick={dateClick}
