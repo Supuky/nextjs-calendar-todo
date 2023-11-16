@@ -45,7 +45,7 @@ export default function Page( { params }: {params: { id: string }} ) {
     };
     return (
         <div className="flex items-center min-h-screen">
-            <div className="sm:w-1/3 m-auto bg-white border border-gray-200 rounded-lg shadow p-5">
+            <div className="sm:w-1/3 w-2/3 m-auto bg-white border border-gray-200 rounded-lg shadow p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
                     Edit Todo!
                 </h5>
@@ -60,11 +60,11 @@ export default function Page( { params }: {params: { id: string }} ) {
                     </div>
                     <div className="mt-2">
                         <input placeholder="start" value={formData.start} onChange={handleChange} name="start" type="date" className="block w-full rounded-md dark:border-gray-200 border py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
-                        sm:text-sm sm:leading-6"/>
+                        sm:text-sm sm:leading-6 bg-transparent"/>
                     </div>
                     <div className="mt-2">
                         <input placeholder="end" value={formData.end} onChange={handleChange} name="end" type="date" className="block w-full rounded-md dark:border-gray-200 border py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-400 
-                        sm:text-sm sm:leading-6"/>
+                        sm:text-sm sm:leading-6 bg-transparent"/>
                     </div>
                     <div className="mt-4 flex justify-between items-center">
                         <select name="priority" value={formData.priority} onChange={handleChange} className=" border rounded-md focus-visible:ring-inset  focus-visible:ring-violet-400 p-1">
@@ -74,7 +74,7 @@ export default function Page( { params }: {params: { id: string }} ) {
                                 ))
                             }
                         </select>
-                        <input type="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit" />
+                        <input type="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit rounded-none" />
                         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-700 rounded-md hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-violet-800" type="submit">Edit!</button>
                     </div>
                 </form>
