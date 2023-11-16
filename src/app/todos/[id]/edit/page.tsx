@@ -45,7 +45,7 @@ export default function Page( { params }: {params: { id: string }} ) {
     };
     return (
         <div className="flex items-center min-h-screen">
-            <div className="sm:w-1/3 w-2/3 m-auto bg-white border border-gray-200 rounded-lg shadow p-5">
+            <div className="sm:w-1/3 w-4/5 m-auto bg-white border border-gray-200 rounded-lg shadow p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900">
                     Edit Todo!
                 </h5>
@@ -82,10 +82,10 @@ export default function Page( { params }: {params: { id: string }} ) {
                                 ))
                             }
                         </select>
-                        <div className="flex gap-1 items-center">
-                        <label htmlFor="color">Color</label>
-                        <input type="color" id="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit rounded-none h-7 w-12" />
-                        </div>
+                        {/* <div className="flex items-center"> */}
+                            {/* <label htmlFor="color">Color</label> */}
+                            <input type="color" id="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit rounded-none h-7 w-12" />
+                        {/* </div> */}
                         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-700 rounded-md hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-violet-800" type="submit">Edit!</button>
                     </div>
                 </form>
