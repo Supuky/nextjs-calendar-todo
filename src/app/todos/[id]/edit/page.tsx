@@ -74,7 +74,7 @@ export default function Page( { params }: {params: { id: string }} ) {
                                 ))
                             }
                         </select>
-                        <input type="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit rounded-none h-7" />
+                        <input type="color" value={formData.backgroundColor} onChange={handleChange} name="backgroundColor" className="block bg-inherit rounded-none h-7 w-12" />
                         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-700 rounded-md hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-violet-700 dark:hover:bg-violet-600 dark:focus:ring-violet-800" type="submit">Edit!</button>
                     </div>
                 </form>
