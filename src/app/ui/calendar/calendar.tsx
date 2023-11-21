@@ -127,7 +127,7 @@ export default function Calendar() {
           editable={true}
           droppable={true}
           eventDrop={getEventDrop}
-          eventResizeStop={getEventRisizeStop}
+          // eventResizeStop={getEventRisizeStop}
         /> 
         :
         <CalendarSkeleton />
