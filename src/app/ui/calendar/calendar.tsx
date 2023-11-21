@@ -88,13 +88,13 @@ export default function Calendar() {
     todoListDispatch({ type: "add/update", payload: {title: title, id: id, start: start, category: category, priority: priority} });
   }
 
-  const getEventRisizeStop = (info: any) => {
-    console.log(info)
-  }
+  // const getEventRisizeStop = (info: any) => {
+  //   console.log(info)
+  // }
 
   return (
     <div className="w-full mb-6">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center sm:mb-6 mb-3">
         <h2 className="sm:text-xl font-bold">Calender</h2>
         <Filter
           filterList={filterVal}
